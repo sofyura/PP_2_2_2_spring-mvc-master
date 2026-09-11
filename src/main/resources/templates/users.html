@@ -31,7 +31,11 @@
         <td th:text="${u.email}">email@example.com</td>
         <td>
             <a th:href="@{/users(id=${u.id})}">Изменить</a>
-            <a th:href="@{/users/delete(id=${u.id})}">Удалить</a>
+
+            <form th:action="@{/users/delete}" method="POST" style="display:inline;">
+                <input type="hidden" name="id" th:value="${u.id}"/>
+                <button type="submit" onclick="return confirm('Удалить пользователя?')">Удалить</button>
+            </form>
         </td>
     </tr>
     </tbody>
